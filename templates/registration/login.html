@@ -1,0 +1,23 @@
+<!-- templates/registration/login.html -->
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<h2>Local Login</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <button type="submit">Log In</button>
+</form>
+
+<h2>SSO Login</h2>
+<form action="{% url 'social:begin' 'osso' %}" method="post">
+  <label>Email</label>
+  <input type="email" name="email" />
+  {% csrf_token %}
+  <button type="submit">Sign in with SSO</button>
+</form> 
+
+{% endblock %}
